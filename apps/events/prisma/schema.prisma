@@ -20,13 +20,16 @@ model User {
 
 model Customer {
   createdAt DateTime @default(now())
-  email     String?
+  email     String?  @map("emailaddress")
   events    Event[]
   firstNAme String?
   id        String   @id @default(cuid())
   lastName  String?
   phone     String?
   updatedAt DateTime @updatedAt
+
+  @@unique([firstname, lastname, id])
+  @@map("customer2")
 }
 
 model Event {
